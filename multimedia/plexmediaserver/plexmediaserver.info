@@ -1,5 +1,5 @@
 PRGNAM="plexmediaserver"
-VERSION="1.13.2.5154-fd05be322"
+VERSION="1.13.2.5154_fd05be322"
 HOMEPAGE="https://plex.tv/"
 DOWNLOAD="https://downloads.plex.tv/plex-media-server/1.13.2.5154-fd05be322/plexmediaserver_1.13.2.5154-fd05be322_i386.deb"
 MD5SUM="7c78ffe6f3aa51b617807e309b1c3089"
