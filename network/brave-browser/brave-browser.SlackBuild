@@ -1,8 +1,8 @@
 #!/bin/sh
 
-# Slackware build script for brave
+# Slackware build script for brave-browser
 
-# Copyright 2018 Donald Cooley South Haven, Indiana USA
+# Copyright 2018-2019 Donald Cooley South Haven, Indiana USA
 # All rights reserved.
 #
 # Redistribution and use of this script, with or without modification, is
@@ -22,8 +22,8 @@
 #  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-PRGNAM=brave
-VERSION=${VERSION:-0.25.2}
+PRGNAM=brave-browser
+VERSION=${VERSION:-0.58.18}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 
@@ -53,8 +53,8 @@ mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
 mkdir -p $PRGNAM-$VERSION
-tar -xvf $CWD/Brave.tar.bz2 -C $PRGNAM-$VERSION
 cd $PRGNAM-$VERSION
+rpm2cpio < $CWD/${PRGNAM}-${VERSION}-${BUILD}.${ARCH}.rpm | cpio -imdv
 chown -R root:root .
 find -L . \
 \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
@@ -62,24 +62,23 @@ find -L . \
 \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
 -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
-# Install Brave in /opt
-mkdir -p $PKG/opt/brave
-cp -R brave-linux-x64/* $PKG/opt/brave
+cp -ap usr opt $PKG/
 
-# Link Brave binary to /usr/bin
-mkdir -p $PKG/usr/bin
-ln -s /opt/brave/brave $PKG/usr/bin/brave
+# Slackware doesn't ship a GNOME desktop so I don't see any reason for gnome-control-center
+rm -rf $PKG/usr/share/gnome-control-center
 
-# Install .desktop file
-mkdir -p $PKG/usr/share/applications
-cp $CWD/$PRGNAM.desktop $PKG/usr/share/applications
-
-# Install icon
-mkdir -p $PKG/usr/share/pixmaps/
-cp $CWD/brave.png $PKG/usr/share/pixmaps/brave.png
+# Move icon into place
+mkdir -p $PKG/usr/share/pixmaps
+cp opt/brave.com/brave/*.xpm $PKG/usr/share/pixmaps/brave-browser.xpm
 
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
-	  | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
+  | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
+
+# Place man page(s) where The Man likes them
+mv $PKG/usr/share/man $PKG/usr/man
+
+find $PKG/usr/man -type f -exec gzip -9 {} \;
+for i in $( find $PKG/usr/man -type l ) ; do ln -s $( readlink $i ).gz $i.gz ; rm $i ; done
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
