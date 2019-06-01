@@ -22,13 +22,40 @@
 #  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-PRGNAM=openjdk
-VERSION=${VERSION:-7u201}
+function applySBoPatch() {
+	cat << EOF | patch -d ../icedtea-2.6.18/patches/boot pr64174.patch
+--- pr64174.patch.orig	2019-05-26 07:15:48.030960856 +0300
++++ pr64174.patch.new	2019-05-26 07:17:00.921955937 +0300
+@@ -1,8 +1,8 @@
+ diff -Nru openjdk-boot.orig/jdk/src/share/classes/java/util/CurrencyData.properties openjdk-boot/jdk/src/share/classes/java/util/CurrencyData.properties
+ --- openjdk-boot.orig/jdk/src/share/classes/java/util/CurrencyData.properties	2014-12-04 15:09:06.030312835 +0000
+ +++ openjdk-boot/jdk/src/share/classes/java/util/CurrencyData.properties	2014-12-04 15:10:07.527160626 +0000
+-@@ -320,7 +320,7 @@
+- # LAO PEOPLE'S DEMOCRATIC REPUBLIC
++@@ -323,7 +323,7 @@
++ # LAO PEOPLE'S DEMOCRATIC REPUBLIC (THE)
+  LA=LAK
+  # LATVIA
+ -LV=LVL;2013-12-31-22-00-00;EUR
+@@ -10,7 +10,7 @@
+  # LEBANON
+  LB=LBP
+  # LESOTHO
+-@@ -332,7 +332,7 @@
++@@ -335,7 +335,7 @@
+  # LIECHTENSTEIN
+  LI=CHF
+  # LITHUANIA
+EOF
+}
+
+PRGNAM=openjdk7
+VERSION=${VERSION:-7u221}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 
 DVER=1.7.0_$(printf $VERSION | cut -du -f2)
-ICEDTEA=icedtea-2.6.16
+ICEDTEA=icedtea-2.6.18
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
@@ -90,6 +117,9 @@ $(
     --with-jdk-src-zip="$CWD/jdk.tar.bz2" \
     --with-langtools-src-zip="$CWD/langtools.tar.bz2" \
     --with-hotspot-src-zip="$CWD/hotspot.tar.bz2"
+
+applySBoPatch
+
 JAVA_HOME=${BOOT_JAVA} PATH=${BOOT_JAVA}/bin:$PATH LOG=trace make
 
 cd $PKG
@@ -106,7 +136,7 @@ find -L . \
 
 mkdir -p $PKG/etc/profile.d
 for file in $(ls "$CWD/profile.d/${PRGNAM}"*) ; do
-  cat $file | sed -e "s#lib/openjdk#lib${LIBDIRSUFFIX}/openjdk#" \
+  cat $file | sed -e "s#lib/openjdk7#lib${LIBDIRSUFFIX}/openjdk7#" \
     > $PKG/etc/profile.d/$(basename $file)
 done
 chmod 755 $PKG/etc/profile.d/*

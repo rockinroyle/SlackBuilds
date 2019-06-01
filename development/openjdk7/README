@@ -3,7 +3,7 @@ Java Development Kit, Standard Edition. It includes tools for developing,
 testing, and running programs written in Java.
 
 apache-ant is a required dependency and you have to install it before
-you build openjdk. However, you do not need to install Oracle's jdk,
+you build 'openjdk7'. However, you do not need to install Oracle's jdk,
 since it's only a runtime dependency of apache-ant.
 
 Before installing this package please consider any other jdk's/jre's
@@ -17,7 +17,7 @@ This script may take a couple of hours to complete and will require
 about 11 GB of disk space for its temporary directory. It defaults to
 "/tmp/SBo" and you may redefine it like this:
 
-TMP=/your/temporary/dir ./openjdk.SlackBuild
+TMP=/your/temporary/dir ./openjdk7.SlackBuild
 
 The 'cacerts' binary is a TrustStore containing CA certificates which
 are used by Java applications. It is taken from the CentOS package
@@ -29,4 +29,4 @@ Internal compiler error: java.lang.NullPointerException at
 org.eclipse.jdt.internal.compiler.ReadManager.run(ReadManager.java:166)
 
 simply run the build again. This happens early so it shouldn't be that of a
-problem.  At least 1 out of 5 runs so far have always succeded.
+problem. At least 1 out of 5 runs so far have always succeded.
