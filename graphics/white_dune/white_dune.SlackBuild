@@ -24,7 +24,7 @@
 
 PRGNAM=white_dune
 SRCNAM=wdune
-VERSION=${VERSION:-1.000}
+VERSION=${VERSION:-1.654}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 
@@ -71,7 +71,7 @@ find -L . \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
 export CFLAGS=$SLKCFLAGS
-export CXXFLAGS=$SLKCFLAGS
+export CXXFLAGS="$SLKCFLAGS -std=c++11"
 ./configure \
  --with-wwwbrowser=firefox \
  --with-helpurl="/usr/doc/$PRGNAM-$VERSION/docs" \
@@ -79,7 +79,8 @@ export CXXFLAGS=$SLKCFLAGS
 make
 
 install -c -d $PKG/install $PKG/usr/bin $PKG/usr/man/man1
-cp bin/* /$PKG/usr/bin
+cp -a bin/* /$PKG/usr/bin
+cp -a tools/run_dune_and_aqsis.sh /$PKG/usr/bin
 install -c -m 644 ./man/dune.1 /$PKG/usr/man/man1
 install -c -d $PKG/usr/doc/$PRGNAM-$VERSION
 cp -fr docs $PKG/usr/doc/$PRGNAM-$VERSION

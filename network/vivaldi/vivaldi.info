@@ -1,14 +1,18 @@
 PRGNAM="vivaldi"
-VERSION="2.5.1525.48"
+VERSION="2.9.1705.41"
 HOMEPAGE="https://vivaldi.com"
-DOWNLOAD="https://downloads.vivaldi.com/stable/vivaldi-stable_2.5.1525.48-1_i386.deb \
-          https://dl.google.com/widevine-cdm/4.10.1196.0-linux-ia32.zip"
-MD5SUM="48992d68d6c39970ee279e08854c853d \
-        d3c080472cee2a74e85d24ba538795d8"
-DOWNLOAD_x86_64="https://downloads.vivaldi.com/stable/vivaldi-stable_2.5.1525.48-1_amd64.deb \
-                 https://dl.google.com/widevine-cdm/4.10.1196.0-linux-x64.zip"
-MD5SUM_x86_64="76909c52c569d5a10ece9a6dc68788dc \
-               6f36d46184187f0f0ca5d93436dc4436"
+DOWNLOAD="https://downloads.vivaldi.com/stable/vivaldi-stable_2.9.1705.41-1_i386.deb \
+          https://launchpadlibrarian.net/449418163/chromium-codecs-ffmpeg-extra_78.0.3904.70-0ubuntu0.16.04.2_i386.deb \
+          https://dl.google.com/widevine-cdm/4.10.1440.18-linux-ia32.zip"
+MD5SUM="150c2ea15bcdf534198b4e4d9aac9bca \
+        9dd2ba0d979042d75987f881842c0351 \
+        c151f6314712678ac81b6298bc36c997"
+DOWNLOAD_x86_64="https://downloads.vivaldi.com/stable/vivaldi-stable_2.9.1705.41-1_amd64.deb \
+                 https://launchpadlibrarian.net/449403909/chromium-codecs-ffmpeg-extra_78.0.3904.70-0ubuntu0.16.04.2_amd64.deb \
+                 https://dl.google.com/widevine-cdm/4.10.1440.18-linux-x64.zip"
+MD5SUM_x86_64="915726cc2bac8e85db00a6edab97f43b \
+               05224151a111339651b3d19999b65a51 \
+               fc6cf66cdff7c57d367b317505f086d1"
 REQUIRES=""
 MAINTAINER="Alexander Verbovetsky"
 EMAIL="alik@ejik.org"

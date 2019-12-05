@@ -1,12 +1,12 @@
 PRGNAM="opencv"
-VERSION="4.1.0"
+VERSION="4.1.2"
 HOMEPAGE="https://opencv.org/"
-DOWNLOAD="https://github.com/opencv/opencv/archive/4.1.0/opencv-4.1.0.tar.gz \
-        https://github.com/opencv/opencv_contrib/archive/4.1.0/opencv_contrib-4.1.0.tar.gz"
-MD5SUM="b80c59c7e4feee6a00608315e02b0b73 \
-        5357a038f54ba15c771abb0d91a5519d"
+DOWNLOAD="https://github.com/opencv/opencv/archive/4.1.2/opencv-4.1.2.tar.gz \
+        https://github.com/opencv/opencv_contrib/archive/4.1.2/opencv_contrib-4.1.2.tar.gz"
+MD5SUM="631f23b142665072969debbe39e1c958 \
+        ad545ffe9ea32b0a8a718207e4c72438"
 DOWNLOAD_x86_64=""
 MD5SUM_x86_64=""
-REQUIRES="numpy3"
+REQUIRES="numpy3 qt5"
 MAINTAINER="Christoph Willing"
 EMAIL="chris.willing@linux.com"

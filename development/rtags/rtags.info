@@ -1,10 +1,10 @@
 PRGNAM="rtags"
-VERSION="2.30"
+VERSION="2.34"
 HOMEPAGE="https://github.com/Andersbakken/rtags"
-DOWNLOAD="https://github.com/Andersbakken/rtags/archive/v2.30/rtags-2.30.tar.gz \
-          https://github.com/Andersbakken/rct/archive/2a3fb3e/rct-2a3fb3ec22d0553f66bffdf517072ac49b149cbf.tar.gz"
-MD5SUM="c7cc08ec66dc76c522b1a890ec8bd5cf \
-        ecbf83029f991806dda53bbf8626b4f7"
+DOWNLOAD="https://github.com/Andersbakken/rtags/archive/v2.34/rtags-2.34.tar.gz \
+          https://github.com/Andersbakken/rct/archive/99a7830/rct-99a7830455f288bdafea31bd9085cd81bee403a1.tar.gz"
+MD5SUM="455fb49cd1faae582bdb334143a073b4 \
+        7a7e7afa6a3b70c3c362ccf3d416ca0e"
 DOWNLOAD_x86_64=""
 MD5SUM_x86_64=""
 REQUIRES=""
